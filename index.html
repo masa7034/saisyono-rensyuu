@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>サービス名 | シンプルLP</title>
+  <meta name="description" content="最小構成のランディングページ。数分で公開できる軽量テンプレート。" />
+  <meta property="og:title" content="サービス名 | シンプルLP" />
+  <meta property="og:description" content="最小構成のランディングページ。数分で公開できる軽量テンプレート。" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+
+  <style>
+    :root {
+      --bg: #0b1020;        /* 背景(濃) */
+      --panel: #11162a;     /* パネル */
+      --text: #e6eef8;      /* 文字 */
+      --muted: #a7b1c2;     /* 補助 */
+      --primary: #0ea5e9;   /* アクセント */
+      --primary-2: #22d3ee; /* グラデ */
+      --ring: rgba(34, 211, 238, .35);
+      --radius: 14px;
+      --maxw: 1100px;
+    }
+
+    * { box-sizing: border-box }
+    html,body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", "Meiryo", sans-serif; }
+    a { color: inherit; text-decoration: none }
+    img { max-width: 100%; height: auto; display: block }
+    .container { width: min(100% - 32px, var(--maxw)); margin: 0 auto }
+
+    /* Header */
+    header { position: sticky; top: 0; backdrop-filter: blur(10px); background: linear-gradient(180deg, rgba(11,16,32,.9), rgba(11,16,32,.6) 60%, transparent); z-index: 10; }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px }
+    .logo { width:28px; height:28px; border-radius:7px; background: radial-gradient(circle at 30% 30%, var(--primary-2), var(--primary)); box-shadow: 0 0 24px rgba(34,211,238,.35) inset; }
+    .nav a.btn { padding:10px 14px; border:1px solid rgba(255,255,255,.12); border-radius:10px; color:var(--text) }
+    .nav a.btn.primary { border-color: transparent; background: linear-gradient(135deg, var(--primary), var(--primary-2)); color:#051019; font-weight:700; }
+    .menu { display:flex; gap:16px; align-items:center }
+    .menu a.link { color:var(--muted) }
+    .hamburger { display:none; background:none; border:0; color:var(--text); font-size:22px; }
+
+    /* Hero */
+    .hero { position:relative; padding:80px 0 40px; overflow:hidden; }
+    .hero::before {
+      content:""; position:absolute; inset:-40% -10% auto -10%; height:85%;
+      background: radial-gradient(700px 350px at 70% 20%, rgba(34,211,238,.20), transparent 60%),
+                  radial-gradient(500px 280px at 15% 10%, rgba(14,165,233,.25), transparent 70%);
+      pointer-events:none; z-index:-1;
+    }
+    .hero-grid { display:grid; grid-template-columns: 1.2fr .8fr; gap:36px; align-items:center }
+    .kicker { display:inline-block; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--primary-2); background: rgba(34,211,238,.12); padding:6px 10px; border:1px solid rgba(34,211,238,.35); border-radius:999px; }
+    h1 { font-size: clamp(28px, 5vw, 44px); line-height:1.15; margin:12px 0 16px; }
+    .lead { color: var(--muted); font-size: clamp(14px, 2.4vw, 18px); }
+    .cta { margin-top:22px; display:flex; gap:12px; flex-wrap:wrap }
+    .cta .btn-lg { padding:14px 18px; border-radius:12px; border:1px solid rgba(255,255,255,.12); }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-2)); color:#051019; font-weight:800; border:0; }
+    .btn-secondary { color:var(--text) }
+    .shot {
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.12); border-radius: var(--radius);
+      box-shadow: 0 10px 40px rgba(0,0,0,.35), 0 0 0 8px rgba(34,211,238,.04);
+      overflow: hidden;
+    }
+    .shot .bar { display:flex; gap:6px; padding:10px; background: rgba(0,0,0,.25) }
+    .shot .dot { width:10px; height:10px; border-radius:50%; background: #f87171; }
+    .shot .dot:nth-child(2) { background:#fb923c } .shot .dot:nth-child(3) { background:#22c55e }
+    .shot pre { margin:0; padding:16px; color:#d1e7ff; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace; font-size:13px; overflow:auto; }
+
+    /* Features */
+    .section { padding:56px 0 }
+    .section h2 { font-size: clamp(22px, 4vw, 32px); margin:0 0 8px }
+    .muted { color: var(--muted) }
+    .features { display:grid; grid-template-columns: repeat(3, 1fr); gap:16px; margin-top:22px }
+    .card { background: var(--panel); border:1px solid rgba(255,255,255,.10); border-radius: var(--radius); padding:18px; transition: transform .2s ease, box-shadow .2s ease; }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,.25) }
+    .icon { width:28px; height:28px; border-radius:6px; background: linear-gradient(135deg, var(--primary), var(--primary-2)); box-shadow: 0 0 0 6px rgba(34,211,238,.08); margin-bottom:10px }
+    .card h3 { margin:8px 0 6px; font-size:18px }
+    .card p { margin:0; color: var(--muted); font-size:14px; line-height:1.6 }
+
+    /* CTA */
+    .cta-panel { margin-top: 28px; padding: 18px; background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.12); border-radius: var(--radius); display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .cta-panel strong { font-size: 18px }
+    .cta-panel a { padding:12px 16px; border-radius: 10px; background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: #051019; font-weight: 800; }
+
+    /* Footer */
+    footer { padding:28px 0 56px; color: var(--muted); font-size: 14px }
+    footer .row { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap }
+    footer nav { display:flex; gap:16px }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .hero-grid { grid-template-columns: 1fr; gap:22px }
+      .features { grid-template-columns: 1fr 1fr }
+      .menu { display:none }
+      .hamburger { display:block }
+      .nav.open .menu { display:flex; flex-direction:column; align-items:flex-start; padding:10px 0 }
+    }
+    @media (max-width: 560px) {
+      .features { grid-template-columns: 1fr }
+      .cta-panel { align-items: stretch }
+    }
+
+    /* Focus ring */
+    .btn-primary, .btn-secondary, .nav a.btn, .cta-panel a { outline: none }
+    .btn-primary:focus-visible, .btn-secondary:focus-visible, .nav a.btn:focus-visible, .cta-panel a:focus-visible { box-shadow: 0 0 0 4px var(--ring) }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" id="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <span>サービス名</span>
+      </div>
+      <nav class="menu" aria-label="主要ナビゲーション">
+        <a class="link" href="#features">特徴</a>
+        <a class="link" href="#pricing">料金</a>
+        <a class="btn" href="#contact">お問い合わせ</a>
+        <a class="btn primary" href="#cta">今すぐはじめる</a>
+      </nav>
+      <button class="hamburger" aria-label="メニュー" aria-expanded="false" id="hamburger">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="kicker">新機能登場</span>
+          <h1>数分で公開できる、<br/>ミニマルなLPテンプレート</h1>
+          <p class="lead">ノーコードでも編集しやすい、コピー＆ペーストで使える軽量テンプレート。必要最低限のセクションで、CVに集中。</p>
+          <div class="cta">
+            <a class="btn-lg btn-primary" href="#cta">無料で試す</a>
+            <a class="btn-lg btn-secondary" href="#features">見るだけ</a>
+          </div>
+        </div>
+        <div class="shot" aria-label="デモ">
+          <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+          <pre><code>&lt;script&gt;
+console.log("Hello LP!");
+// 軽量・高速・編集簡単
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="features">
+      <h2>必要なものだけを、すっきりと</h2>
+      <p class="muted">高速表示・編集容易・アクセシビリティ配慮</p>
+      <div class="features">
+        <div class="card">
+          <div class="icon" aria-hidden="true"></div>
+          <h3>軽量・高速</h3>
+          <p>依存ライブラリなし。CSSと少量のJSのみで爆速表示。</p>
+        </div>
+        <div class="card">
+          <div class="icon" aria-hidden="true"></div>
+          <h3>編集しやすい</h3>
+          <p>単一HTMLで運用可。色・文言・CTAをすぐ変更。</p>
+        </div>
+        <div class="card">
+          <div class="icon" aria-hidden="true"></div>
+          <h3>レスポンシブ</h3>
+          <p>スマホ〜デスクトップまで綺麗に表示されます。</p>
+        </div>
+      </div>
+
+      <div class="cta-panel" id="pricing">
+        <strong>今だけ無料でお試し</strong>
+        <a href="#cta">無料で始める</a>
+      </div>
+    </section>
+
+    <section class="section container" id="cta">
+      <h2>今すぐはじめましょう</h2>
+      <p class="muted">メールアドレスだけで30秒。あとからキャンセル可能。</p>
+      <form onsubmit="event.preventDefault(); alert('送信ありがとうございます！');" aria-label="登録フォーム" style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px">
+        <input type="email" required placeholder="メールアドレス" aria-label="メールアドレス" style="flex:1 1 260px; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,255,255,.15); background:#0d1426; color:var(--text)" />
+        <button class="btn-primary" style="border-radius:10px; padding:12px 16px; border:0">登録する</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container row">
+      <div style="display:flex; align-items:center; gap:10px">
+        <div class="logo" aria-hidden="true"></div>
+        <span>© <span id="year"></span> サービス名</span>
+      </div>
+      <nav aria-label="フッターナビ">
+        <a href="#" class="muted">利用規約</a>
+        <a href="#" class="muted">プライバシー</a>
+        <a href="#contact" class="muted">お問い合わせ</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // 年表示
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ハンバーガー開閉
+    const nav = document.getElementById('nav');
+    const btn = document.getElementById('hamburger');
+    btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    // アンカーのスムーススクロール
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+</body>
+</html>
+
